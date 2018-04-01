@@ -17,6 +17,7 @@ var gulp = require('gulp'),
     data = require('gulp-data'),
     rimrafGulp = require('gulp-rimraf'),
     reload = browserSync.reload;
+const babel = require('gulp-babel');
 
 var path = {
     build: {
@@ -76,11 +77,17 @@ gulp.task('html:build', function () {
 
 
 gulp.task('js:build', function () {
-    gulp.src(path.src.js) 
+    gulp.src(path.src.js)
+        .pipe(babel({
+            presets: ['env']
+        }))
         .pipe(rigger())
-        .pipe(sourcemaps.init()) 
+        .pipe(sourcemaps.init())
         .pipe(uglify())
-        .pipe(sourcemaps.write()) 
+        .on('error', function (e) {
+            console.log(e)
+        })
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(path.build.js))
         .pipe(reload({stream: true}));
 });
@@ -147,8 +154,8 @@ gulp.task('watch', function(){
 });
 
 gulp.task('yiibuild', [
-    'js:build',
-    'style:build'
+    //'style:build',
+    'js:build'
 ]);
 
 gulp.task('yiiwatch', function(){
