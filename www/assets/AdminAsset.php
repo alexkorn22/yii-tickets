@@ -9,19 +9,13 @@ namespace app\assets;
 
 use yii\web\AssetBundle;
 
-/**
- * Main application asset bundle.
- *
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
- */
-class AppAsset extends AssetBundle
+class AdminAsset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        '/css/libs/ui.totop.css',
-        '/css/site.css',
+        'css/libs/ui.totop.css',
+        'css/site.css',
     ];
     public $js = [
         '/js/libs/easing.js',

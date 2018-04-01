@@ -2,8 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\User\Ticket;
-use GuzzleHttp\Client;
+use app\models\Ticket;
 use Yii;
 use yii\web\BadRequestHttpException;
 

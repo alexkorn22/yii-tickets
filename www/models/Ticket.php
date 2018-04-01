@@ -6,7 +6,7 @@
  * Time: 18:54
  */
 
-namespace app\models\User;
+namespace app\models;
 
 use GuzzleHttp\Client;
 use Yii;

@@ -15,10 +15,7 @@ $this->title = 'Список обращений';
 </div>
 
 <?
-$this->registerCssFile('/css/ui.totop.css');
-$this->registerJsFile('/js/easing.js',['depends' => ['yii\web\JqueryAsset']]);
-$this->registerJsFile('/js/jquery.ui.totop.min.js',['depends' => ['yii\web\JqueryAsset']]);
-$this->registerJsFile('/js/listTickets.js',['depends' => ['yii\web\JqueryAsset']])
+$this->registerJsFile('/js/src/listTickets.js',['depends' => ['yii\web\JqueryAsset']])
 ?>
 
 
