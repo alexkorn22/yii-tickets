@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <title>helpdesk</title>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script
+            src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<header>
+    <div class="header-wrap">
+        <div class="brand">
+            <a href="/">
+                <img src="img/logoWedo(white).png" class="logo d-none d-sm-block" alt="WeDo">
+                <img src="img/logo(white).png" class="logo d-block d-sm-none" alt="WeDo">
+            </a>
+        </div>
+        <div class="add-ticket">
+            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#add-ticket"><i class="material-icons">playlist_add</i><span class="d-none d-sm-block">Новое обращение</span></button>
+        </div>
+        <div class="account">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        User
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Exit</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<section id="some-ticket">
+    <div class="container">
+        <div class="row ticket-head">
+            <div class="col-md-9">
+                <div class="title-ticket">
+                    <h1>Не работает принтер на АП1</h1>
+                </div>
+                <div class="number-date">
+                    <p class="d-none d-sm-block">Номер: <span>ЭРМ-001</span></p>
+                    <p>Дата: <span>05.02.2018 10:00</span></p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="add-item d-none d-sm-flex">
+                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#add-item">Добавить запись</button>
+                </div>
+            </div>
+        </div>
+        <div class="row items">
+            <div class="col-md-12">
+                <div class="item client">
+                <div class="wrap-head-item">
+                    <div class="title-item">
+                        <h4>Тема записи, хз зачем, но в 1с есть она</h4>
+                    </div>
+                    <div class="date-item">
+                        <span>06.02.2018 11:06</span>
+                    </div>
+                </div>
+                <div class="body-item">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exercitationem in ipsum laborum modi nam nostrum  consectetur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exercitationem in ipsum laborum modi nam nostrum  consectetur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exercitationem in ipsum laborum modi nam nostrum obcaecati officia, quam reiciendis suscipit tempore voluptatem.
+                    </span>
+                </div>
+            </div>
+                <div class="item collaborator">
+                <div class="wrap-head-item">
+                    <div class="title-item">
+                        <h4>Ответочка Тема записи, хз зачем, но в 1с есть она</h4>
+                    </div>
+                    <div class="date-item">
+                        <span>06.02.2018 14:26</span>
+                    </div>
+                </div>
+                <div class="body-item">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exercitationem in ipsum laborum modi nam nostrum  consectetur adipisicing elit. Amet at consequatur cum dolor eaque <br><br> tur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exer eos eum exercitationem in ipsum laborum modi nam nostrum  consectetur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exercitationem in ipsum laborum modi nam nostrum obcaecati officia, quam reiciendis suscipit tempore voluptatem.
+                    </span>
+                </div>
+            </div>
+                <div class="item client">
+                    <div class="wrap-head-item">
+                        <div class="title-item">
+                            <h4>Тема записи, хз зачем, но в 1с есть она</h4>
+                        </div>
+                        <div class="date-item">
+                            <span>06.02.2018 11:06</span>
+                        </div>
+                    </div>
+                    <div class="body-item">
+                    <span>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exercitationem in ipsum laborum modi nam nostrum  consectetur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exercitationem in ipsum laborum modi nam nostrum  consectetur adipisicing elit. Amet at consequatur cum dolor eaque eos eum exercitationem in ipsum laborum modi nam nostrum obcaecati officia, quam reiciendis suscipit tempore voluptatem.
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row btn-add-item-bottom">
+            <div class="col-md-12">
+                <div class="add-item">
+                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#add-item"><i class="material-icons d-block d-sm-none">create</i><span class="d-none d-sm-block">Добавить запись</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div>© Copyright 2018</div>
+</footer>
+
+<!-- Modal -->
+<div class="modal fade bd-example-modal-lg" id="add-ticket" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Добавить новое обращение</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="title-ticket" class="col-form-label">Тема</label>
+                        <input type="text" class="form-control" id="title-ticket" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Описание</label>
+                        <textarea class="form-control" id="message-text" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-danger">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="add-item" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle2" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle2">Добавить новую запись</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="title-ticket-modal">
+                    <p>Обращение: <span>Не работает принтер на АП1 от <span class="date-modal">50.02.2018</span></span></p>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label for="title-ticket" class="col-form-label">Запись</label>
+                        <input type="text" class="form-control" id="title-item" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">Комментарий</label>
+                        <textarea class="form-control" id="message-item" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+                <button type="button" class="btn btn-danger">Создать</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

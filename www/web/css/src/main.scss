@@ -1,0 +1,17 @@
+@import "../../../../node_modules/bootstrap/scss/bootstrap-reboot";
+@import "variable";
+@import "home";
+
+body {
+  background: $white;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  font-family: 'Roboto Light', sans-serif;
+  overflow-x: hidden;
+  width: 100%;
+  height: auto !important;
+  margin: 0;
+  padding-right: 0px !important;
+}
+//media
+@import "media";
