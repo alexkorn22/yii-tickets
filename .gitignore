@@ -1,0 +1,4 @@
+.idea
+www/config/web.php
+www/config/params.php
+www/config/db.php
