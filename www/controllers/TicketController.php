@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Ticket;
 use Yii;
 use yii\web\BadRequestHttpException;
+use yii\web\NotFoundHttpException;
 
 class TicketController extends \yii\web\Controller
 {
@@ -25,6 +26,10 @@ class TicketController extends \yii\web\Controller
 
     public function actionListAjax(){
         $start = Yii::$app->request->post('begin');
+
+        if (Yii::$app->user->isGuest) {
+            throw new NotFoundHttpException('Страница не найдена');
+        }
         $tickets = Ticket::findByClientGuid(Yii::$app->user->identity->guid,$start);
         $result['html'] = $this->renderAjax('_listTicket',compact('tickets'));
         $result['stop'] = count($tickets) == 0;

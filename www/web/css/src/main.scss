@@ -17,5 +17,11 @@ body {
 #content {
   min-height: 100vh;
 }
+#loader {
+  img {
+    width: 60px;
+  }
+  margin-bottom: 15px;
+}
 //media
 @import "media";

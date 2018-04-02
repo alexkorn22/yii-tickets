@@ -19,7 +19,7 @@ class Ticket extends Model {
     public $number;
     public $result;
     public $completed;
-    public static $count = 10;
+    public static $count = 25;
     //private $url = 'http://artorg.ddns.net:8899/ArtorgWork20/odata/standard.odata/Document_ОбращенияКлиентов?$format=json';
     //'http://artorg.ddns.net:8899/ArtorgWork20/odata/standard.odata/Catalog_Клиенты?$format=json'
 

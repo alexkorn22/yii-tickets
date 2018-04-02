@@ -2,12 +2,10 @@
 
 $(document).ready(function () {
 
-    $().UItoTop({ easingType: 'easeOutQuart' });
-
-    let blockLoad = $('#loadTickets');
-    let blockListTickets =  $('#blockListTickets');
-    let count = 10;
-    let begin = 10;
+    let blockLoad = $('#loader');
+    let blockListTickets =  $('.content-tickets');
+    let count = 25;
+    let begin = 25;
     let block = false;
     let stop = false;
 
@@ -25,10 +23,12 @@ $(document).ready(function () {
 
     function loader(){
         block = true;
+        console.log('loader');
         $.ajax({
             type:"POST",
             url:"/ticket/list-ajax",
             data: {
+                _csrf : $('#csrfParamListTicket').val(),
                 begin : begin,
                 count : count
             },
