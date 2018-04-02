@@ -13,6 +13,14 @@ class TicketController extends \yii\web\Controller
         if (Yii::$app->user->isGuest) {
             return $this->goHome();
         }
+        $tickets = Ticket::findNotCompleted(Yii::$app->user->identity->guid);
+        return $this->render('index',compact('tickets'));
+    }
+
+    public function actionAll(){
+        if (Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
         $tickets = Ticket::findByClientGuid(Yii::$app->user->identity->guid);
         return $this->render('index',compact('tickets'));
     }
@@ -25,6 +33,18 @@ class TicketController extends \yii\web\Controller
     }
 
     public function actionListAjax(){
+        $start = Yii::$app->request->post('begin');
+
+        if (Yii::$app->user->isGuest) {
+            throw new NotFoundHttpException('Страница не найдена');
+        }
+        $tickets = Ticket::findNotCompleted(Yii::$app->user->identity->guid,$start);
+        $result['html'] = $this->renderAjax('_listTicket',compact('tickets'));
+        $result['stop'] = count($tickets) == 0;
+        return json_encode($result,true);
+    }
+
+    public function actionListAjaxAll(){
         $start = Yii::$app->request->post('begin');
 
         if (Yii::$app->user->isGuest) {

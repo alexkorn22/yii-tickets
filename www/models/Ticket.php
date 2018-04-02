@@ -23,21 +23,35 @@ class Ticket extends Model {
     //private $url = 'http://artorg.ddns.net:8899/ArtorgWork20/odata/standard.odata/Document_ОбращенияКлиентов?$format=json';
     //'http://artorg.ddns.net:8899/ArtorgWork20/odata/standard.odata/Catalog_Клиенты?$format=json'
 
-    public static function findByClientGuid($guid,$start = 0) {
-        $list = [];
-
+    protected static function getParamsForFind($guid, $start) {
         $params['$skip'] = $start;
         $params['$top'] = self::$count;
         $params['$orderby'] = 'Date desc';
         $params['$filter'] = "Клиент_Key eq guid'{$guid}'";
-        $res = getRequestOdata('Document_ОбращенияКлиентов',$params);
+        return $params;
+    }
 
+    protected static function parseResultRequestOdata($res) {
+        $list = [];
         foreach ($res['value'] as $data) {
             $item = new Ticket();
             $item->loadFromOdata($data);
             $list[] = $item;
         }
         return $list;
+    }
+
+    public static function findByClientGuid($guid,$start = 0) {
+        $params = self::getParamsForFind($guid,$start);
+        $res = getRequestOdata('Document_ОбращенияКлиентов',$params);
+        return self::parseResultRequestOdata($res);
+    }
+
+    public static function findNotCompleted($guid,$start = 0) {
+        $params = self::getParamsForFind($guid,$start);
+        $params['$filter'] .= ' and Завершено eq false';
+        $res = getRequestOdata('Document_ОбращенияКлиентов',$params);
+        return self::parseResultRequestOdata($res);
     }
 
     public function loadFromOdata($odata) {

@@ -1,7 +1,8 @@
 <?php
 /* @var $this yii\web\View */
 
-use yii\helpers\Html;
+use yii\bootstrap\Tabs;use yii\helpers\Html;
+use yii\helpers\Url;
 
 /* @var $tickets \app\models\User\Ticket[] */
 $this->title = 'Список обращений';
@@ -11,14 +12,14 @@ $this->title = 'Список обращений';
     <div class="container">
         <div class="row tabs">
             <div class="col-md-12">
-                <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
+                <ul class="nav nav-pills nav-fill" id="pills-tab">
                     <li class="nav-item">
                         <a class="nav-link my-nav-link open active">
                             Открытые
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link my-nav-link all" id="pills-home-tab">
+                        <a href="<? Url::to(['ticket/all']) ?>" class="nav-link my-nav-link all " id="pills-home-tab">
                             Все обращения
                         </a>
                     </li>
@@ -48,8 +49,11 @@ $this->title = 'Список обращений';
                             echo $this->render('_listTicket', ['tickets' => $tickets]);
                             ?>
                         </ul>
-                        <div id="loader" class="d-flex justify-content-center">
-                            <img src="/images/loader.gif" alt="Загрузка" class="img-responsive">
+                        <div id="loader">
+                            <div class="loader__content d-flex justify-content-center">
+                                <img src="/images/loader.gif" alt="Загрузка" class="img-responsive">
+                            </div>
+
                         </div>
                     </div>
                 </div>
