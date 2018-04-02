@@ -31,205 +31,52 @@ AppAsset::register($this);
 <header>
     <div class="header-wrap">
         <div class="brand">
-            <a href="#">
-                <img src="images/logoWedo(white).png" class="logo d-none d-sm-block" alt="WeDo">
-                <img src="images/logo(white).png" class="logo d-block d-sm-none" alt="WeDo">
+            <a href="<?=Yii::$app->urlManager->createUrl([''])?>">
+                <img src="/images/logoWedo(white).png" class="logo d-none d-sm-block" alt="WeDo">
+                <img src="/images/logo(white).png" class="logo d-block d-sm-none" alt="WeDo">
             </a>
         </div>
         <div class="add-ticket">
+    <? if (!Yii::$app->user->isGuest):?>
             <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#add-ticket"><i class="material-icons"></i><span class="d-none d-sm-block">Новое обращение</span></button>
+    <? endif;?>
         </div>
-        <div class="account">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        User
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Exit</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
+
+            <div class="account">
+                <ul class="navbar-nav mr-auto">
+                    <? if (Yii::$app->user->isGuest):?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="<?=Yii::$app->urlManager->createUrl(['site/login'])?>">Войти</a>
+                    </li>
+                    <?else:?>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?=Yii::$app->user->identity->getRepresent()?>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="<?=Yii::$app->urlManager->createUrl('ticket/index')?>">Обращения</a>
+                            <div class="dropdown-divider"></div>
+                            <?
+                            echo Html::beginForm(['/site/logout'], 'post')
+                            . Html::submitButton(
+                                'Выход',
+                                ['class' => 'dropdown-item']
+                            )
+                            . Html::endForm()
+                            ?>
+                        </div>
+                    </li>
+                    <? endif;?>
+                </ul>
+            </div>
+
 
     </div>
 </header>
-
-<section id="home-page">
-    <div class="container">
-        <div class="row tabs">
-            <div class="col-md-12">
-                <ul class="nav nav-pills nav-fill" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link my-nav-link open active" id="pills-profile-tab" data-toggle="pill" href="#ticket-open" role="tab" aria-controls="pills-profile" aria-selected="false">
-                            Открытые
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link my-nav-link all" id="pills-home-tab" data-toggle="pill" href="#ticket-all" role="tab" aria-controls="pills-home" aria-selected="true">
-                            Все обращения
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content tikets" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="ticket-open" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <ul class="top-line d-none d-sm-block">
-                            <li class="title">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <p>Номер</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>Тема</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Обновлено</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Статус</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="content-tickets">
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <p class="d-none d-sm-block">ЭРМ-002</p>
-                                    </div>
-                                    <div class="name-ticket col-md-6">
-                                        <a href="">
-                                            <p>Проблемы с обменами с Круглочуточной аптекой</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-2 last-update">
-                                        <p>07.02.2018 18:00</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="label-open">
-                                            <span>Открыт</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <p class="d-none d-sm-block">ЭРМ-003</p>
-                                    </div>
-                                    <div class="name-ticket col-md-6">
-                                        <a href="">
-                                            <p>Сервер не включается. Аптека Степногорск</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-2 last-update">
-                                        <p>01.02.2018 10:30</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="label-open">
-                                            <span>Открыт</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="wrap-show-more">
-                            <button type="button" id="load-open" class="btn btn-outline-danger">Показать больше</button>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="ticket-all" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <ul class="top-line d-none d-sm-block">
-                            <li class="title">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <p>Номер</p>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <p>Тема</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Обновлено</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <p>Статус</p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <ul class="content-tickets">
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <p class="d-none d-sm-block">ЭРМ-001</p>
-                                    </div>
-                                    <div class="name-ticket col-md-6">
-                                        <a href="ticket.html">
-                                            <p>Не работает принтер на АП1</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-2 last-update">
-                                        <p>06.02.2018 14:02</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="label-close">
-                                            <span>Закрыт</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <p class="d-none d-sm-block">ЭРМ-002</p>
-                                    </div>
-                                    <div class="name-ticket col-md-6">
-                                        <a href="">
-                                            <p>Проблемы с обменами с Круглочуточной аптекой</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-2 last-update">
-                                        <p>07.02.2018 18:00</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="label-open">
-                                            <span>Открыт</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <p class="d-none d-sm-block">ЭРМ-003</p>
-                                    </div>
-                                    <div class="name-ticket col-md-6">
-                                        <a href="">
-                                            <p>Сервер не включается. Аптека Степногорск</p>
-                                        </a>
-                                    </div>
-                                    <div class="col-md-2 last-update">
-                                        <p>01.02.2018 10:30</p>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div class="label-open">
-                                            <span>Открыт</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                        <div class="wrap-show-more">
-                            <button type="button" id="load-all" class="btn btn-outline-danger">Показать больше</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+<section id="content">
+    <?= $content ?>
 </section>
+
 
 <footer>
     <div>© Copyright 2018</div>

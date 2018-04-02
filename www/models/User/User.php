@@ -44,12 +44,12 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return [
             'id' => 'ID',
-            'login' => 'Login',
-            'password' => 'Password',
-            'name' => 'Name',
-            'second_name' => 'Second Name',
-            'is_admin' => 'Is Admin',
-            'guid' => 'Guid',
+            'login' => 'Логин',
+            'password' => 'Пароль',
+            'name' => 'Имя',
+            'second_name' => 'Фамилия',
+            'is_admin' => 'Права админа',
+            'guid' => 'Гуид клиента из 1C',
         ];
     }
 
@@ -110,6 +110,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function setPassword($password) {
         $this->password = Yii::$app->getSecurity()->generatePasswordHash($password);
+    }
+
+    public function getRepresent(){
+        return $this->name . ' ' . $this->second_name;
     }
 
 }
