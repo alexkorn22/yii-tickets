@@ -2,6 +2,18 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Система тикетов';
 ?>
-Это главная страница
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Система тикетов</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            Это главная страница
+        </div>
+    </div>
+</div>
+

@@ -60,7 +60,7 @@ AppAsset::register($this);
                             echo Html::beginForm(['/site/logout'], 'post')
                             . Html::submitButton(
                                 'Выход',
-                                ['class' => 'dropdown-item']
+                                ['class' => 'dropdown-item account__logout-button']
                             )
                             . Html::endForm()
                             ?>
