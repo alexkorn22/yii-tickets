@@ -14,12 +14,12 @@ $this->title = 'Список обращений';
             <div class="col-md-12">
                 <ul class="nav nav-pills nav-fill" id="pills-tab">
                     <li class="nav-item">
-                        <a class="nav-link my-nav-link open active">
+                        <a href="<?=Url::to(['ticket/']) ?>" class="nav-link my-nav-link open">
                             Открытые
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?=Url::to(['ticket/all']) ?>" class="nav-link my-nav-link all " id="pills-home-tab">
+                        <a  class="nav-link my-nav-link all active" id="pills-home-tab">
                             Все обращения
                         </a>
                     </li>
@@ -63,12 +63,8 @@ $this->title = 'Список обращений';
 </section>
 <?
 echo Html :: hiddenInput(Yii::$app->getRequest()->csrfParam, Yii::$app->getRequest()->getCsrfToken(), ['id'=> 'csrfParamListTicket']);
-?>
-
-
-<?
 $this->registerJsFile('/js/src/listTickets.js',['depends' => ['yii\web\JqueryAsset']]);
-$this->registerJs('new ListTickets("/ticket/list-ajax");')
+$this->registerJs('new ListTickets("/ticket/list-ajax-all");')
 ?>
 
 

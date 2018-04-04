@@ -22,7 +22,7 @@ class TicketController extends \yii\web\Controller
             return $this->goHome();
         }
         $tickets = Ticket::findByClientGuid(Yii::$app->user->identity->guid);
-        return $this->render('index',compact('tickets'));
+        return $this->render('all',compact('tickets'));
     }
 
     public function beforeAction($action){
