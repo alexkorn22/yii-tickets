@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use app\models\Ticket;
 use Yii;
+use yii\helpers\ArrayHelper;
+use yii\helpers\Html;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 
@@ -34,7 +36,6 @@ class TicketController extends \yii\web\Controller
 
     public function actionListAjax(){
         $start = Yii::$app->request->post('begin');
-
         if (Yii::$app->user->isGuest) {
             throw new NotFoundHttpException('Страница не найдена');
         }
@@ -46,7 +47,6 @@ class TicketController extends \yii\web\Controller
 
     public function actionListAjaxAll(){
         $start = Yii::$app->request->post('begin');
-
         if (Yii::$app->user->isGuest) {
             throw new NotFoundHttpException('Страница не найдена');
         }
@@ -57,9 +57,13 @@ class TicketController extends \yii\web\Controller
     }
 
     public function actionItem($guid){
-        return $guid;
-//        $tickets = Ticket::findByClientGuid(Yii::$app->user->identity->guid);
-//        return $this->render('index',compact('tickets'));
+        $list = Ticket::findByGuid($guid);
+        if (count($list) < 1) {
+            throw new NotFoundHttpException('Не найдено обращение');
+        }
+        $ticket = $list[0];
+        ArrayHelper::multisort($ticket->records, ['ДатаВремя'],[SORT_DESC]);
+        return $this->render('view',compact('ticket'));
     }
 
 }

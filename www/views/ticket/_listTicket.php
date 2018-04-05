@@ -9,7 +9,7 @@
                 <p class="d-none d-sm-block"><?= $ticket->number ?></p>
             </div>
             <div class="name-ticket col-md-6">
-                <a href="">
+                <a href="<?=Yii::$app->urlManager->createUrl(['/ticket/item','guid' => $ticket->guid])?>">
                     <p><?= $ticket->result ?></p>
                 </a>
             </div>
