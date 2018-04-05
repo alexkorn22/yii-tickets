@@ -27,7 +27,7 @@ class TicketController extends \yii\web\Controller
 
     public function beforeAction($action){
         if (Yii::$app->user->isGuest) {
-            $this->redirect(['/']);
+           return $this->redirect(['site/login']);
         }
         return parent::beforeAction($action);
     }

@@ -25,7 +25,7 @@ class Module extends \yii\base\Module
     {
         parent::init();
         if (Yii::$app->user->isGuest || !Yii::$app->user->identity->isAdmin()) {
-            Yii::$app->response->redirect(['/']);
+            Yii::$app->response->redirect(['site/login']);
         }
     }
 }
