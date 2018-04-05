@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 
 /**
@@ -21,6 +22,8 @@ class DefaultController extends Controller
     public function actionListClients()
     {
         $list = getRequestOdata('Catalog_Клиенты');
-        return $this->render('listClients',['clients' =>$list['value']]);
+        $clients = $list['value'];
+        ArrayHelper::multisort($clients, ['Description'], [SORT_ASC]);
+        return $this->render('listClients',['clients' =>$clients]);
     }
 }

@@ -38,7 +38,7 @@ AppAsset::register($this);
         </div>
         <div class="add-ticket">
     <? if (!Yii::$app->user->isGuest):?>
-            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#add-ticket"><i class="material-icons"></i><span class="d-none d-sm-block">Новое обращение</span></button>
+            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" disabled data-target="#add-ticket"><i class="material-icons"></i><span class="d-none d-sm-block">Новое обращение</span></button>
     <? endif;?>
         </div>
 
@@ -55,6 +55,12 @@ AppAsset::register($this);
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="<?=Yii::$app->urlManager->createUrl('ticket/index')?>">Обращения</a>
+                            <? if (Yii::$app->user->identity->isAdmin()):?>
+                            <?=Html::a('Админка',
+                                    Yii::$app->urlManager->createUrl('/admin'),
+                                    ['class' => 'dropdown-item'])
+                            ?>
+                            <?endif;?>
                             <div class="dropdown-divider"></div>
                             <?
                             echo Html::beginForm(['/site/logout'], 'post')
