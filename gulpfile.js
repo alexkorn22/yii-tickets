@@ -154,7 +154,7 @@ gulp.task('watch', function(){
 });
 
 gulp.task('yiibuild', [
-    //'style:build',
+    'style:build',
     'js:build'
 ]);
 
