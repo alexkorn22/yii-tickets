@@ -20,14 +20,15 @@ class AppAsset extends AssetBundle
         '/css/dist/main.css'
     ];
     public $js = [
-        'http://code.jquery.com/jquery-3.3.1.min.js',
+        //'http://code.jquery.com/jquery-3.3.1.min.js',
         'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js',
         'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js',
         'js/libs/jquery.ui.totop.min.js',
         'js/dist/main.js'
     ];
     public $depends = [
-       // 'yii\web\YiiAsset',
+        'yii\web\JqueryAsset',
+        'yii\web\YiiAsset',
         //'yii\bootstrap\BootstrapAsset',
     ];
 }

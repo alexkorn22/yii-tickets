@@ -80,6 +80,9 @@ AppAsset::register($this);
     </div>
 </header>
 <section id="content">
+    <div class="container">
+        <?=Alert::widget() ?>
+    </div>
     <?= $content ?>
 </section>
 

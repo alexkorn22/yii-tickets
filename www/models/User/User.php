@@ -94,7 +94,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public function validatePassword($password) {
 
-        return password_verify($password,$this->password);
+        return Yii::$app->getSecurity()->validatePassword($password,$this->password);
 
     }
 

@@ -79,10 +79,20 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post())) {
-
             $model->login();
+            if ($model->hasErrors()) {
+                foreach ($model->errors as $error) {
+                    Yii::$app->session->setFlash('error', $error);
+                }
+                return $this->render('login', [
+                    'model' => $model,
+                ]);
+            }
+
             return $this->goHome();
         }
+
+
         return $this->render('login', [
             'model' => $model,
         ]);

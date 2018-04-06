@@ -20,6 +20,14 @@ class m180210_111842_create_user_table extends Migration
             'second_name' => $this->string(255),
             'is_admin' => $this->integer(1),
         ]);
+        $data = [
+            'login' => 'admin',
+            'password' => Yii::$app->getSecurity()->generatePasswordHash('admin'),
+            'name' => 'admin',
+            'second_name' => 'admin',
+            'is_admin' => 1
+        ];
+        $this->insert('user', $data);
     }
 
     /**
