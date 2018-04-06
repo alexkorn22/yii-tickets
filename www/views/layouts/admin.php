@@ -39,7 +39,7 @@ AdminAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'На сайт', 'url' => ['/']],
+            ['label' => 'Перейти в пользовательскую часть', 'url' => ['/']],
             ['label' => 'Пользователи', 'url' => ['/admin/user']],
             ['label' => 'Список клиентов', 'url' => ['/admin/default/list-clients']],
             Yii::$app->user->isGuest ? (
@@ -48,7 +48,7 @@ AdminAsset::register($this);
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post')
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->login . ')',
+                    'Выйти (' . Yii::$app->user->identity->login . ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
@@ -70,7 +70,7 @@ AdminAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy;WeDo <?= date('Y') ?></p>
 
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>

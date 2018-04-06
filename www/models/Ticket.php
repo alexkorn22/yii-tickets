@@ -19,25 +19,47 @@ class Ticket extends Model {
     public $number;
     public $result;
     public $completed;
-    public static $count = 10;
+    public $records;
+    public static $count = 25;
     //private $url = 'http://artorg.ddns.net:8899/ArtorgWork20/odata/standard.odata/Document_ОбращенияКлиентов?$format=json';
     //'http://artorg.ddns.net:8899/ArtorgWork20/odata/standard.odata/Catalog_Клиенты?$format=json'
 
-    public static function findByClientGuid($guid,$start = 0) {
-        $list = [];
-
+    protected static function getParamsForFindByClientGuid($guid, $start) {
         $params['$skip'] = $start;
         $params['$top'] = self::$count;
         $params['$orderby'] = 'Date desc';
         $params['$filter'] = "Клиент_Key eq guid'{$guid}'";
-        $res = getRequestOdata('Document_ОбращенияКлиентов',$params);
+        return $params;
+    }
 
+    protected static function parseResultRequestOdata($res) {
+        $list = [];
         foreach ($res['value'] as $data) {
             $item = new Ticket();
             $item->loadFromOdata($data);
             $list[] = $item;
         }
         return $list;
+    }
+
+    public static function findByClientGuid($guid,$start = 0) {
+        $params = self::getParamsForFindByClientGuid($guid,$start);
+        $res = getRequestOdata('Document_ОбращенияКлиентов',$params);
+        return self::parseResultRequestOdata($res);
+    }
+
+    public static function findNotCompleted($guid,$start = 0) {
+        $params = self::getParamsForFindByClientGuid($guid,$start);
+        $params['$filter'] .= ' and Завершено eq false';
+        $res = getRequestOdata('Document_ОбращенияКлиентов',$params);
+        return self::parseResultRequestOdata($res);
+    }
+
+    public static function findByGuid($guid,$start = 0) {
+        $params = self::getParamsForFindByClientGuid($guid,$start);
+        $params['$filter'] = "Ref_Key eq guid'{$guid}'";
+        $res = getRequestOdata('Document_ОбращенияКлиентов',$params);
+        return self::parseResultRequestOdata($res);
     }
 
     public function loadFromOdata($odata) {
@@ -61,6 +83,10 @@ class Ticket extends Model {
                 }
                 case 'Результат' : {
                     $this->result = str_ireplace('¶','<br>',$value);
+                    break;
+                }
+                case 'Записи' : {
+                    $this->records = $value;
                     break;
                 }
                 default:

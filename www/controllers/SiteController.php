@@ -59,9 +59,11 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIndex()
-    {
-        return $this->render('index');
+    public function actionIndex(){
+        if (Yii::$app->user->isGuest) {
+            return  $this->redirect(['site/login']);
+        }
+        return $this->run('ticket/index');
     }
 
     /**
@@ -76,9 +78,21 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->login();
+            if ($model->hasErrors()) {
+                foreach ($model->errors as $error) {
+                    Yii::$app->session->setFlash('error', $error);
+                }
+                return $this->render('login', [
+                    'model' => $model,
+                ]);
+            }
+
+            return $this->goHome();
         }
+
+
         return $this->render('login', [
             'model' => $model,
         ]);
